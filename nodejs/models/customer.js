@@ -36,7 +36,7 @@ const customerSchema = mongoose.Schema({
         max: 2.00,
         message: 'enter your real height'
     },
-    weight: {
+    initialWeight: {
         type: Number,
         required: true,
         min: 40,
@@ -60,9 +60,10 @@ const customerSchema = mongoose.Schema({
     },
     // password: {
     //     type: String,
-    //     required: true
-    // }
-    Circumference: {
+    //     required: true,
+
+    // },
+   // Circumference: {
         chest: {
             type: Number,
             required: [true, "enter your chest size"]
@@ -75,6 +76,7 @@ const customerSchema = mongoose.Schema({
             type: Number,
             required: [true, "enter your pelvis size"]
         },
+    //}
         // lostGrams: {
         //     type: Number,
         //     max: 250
@@ -84,7 +86,7 @@ const customerSchema = mongoose.Schema({
             required: [true, "enter a join date"]
         }
 
-    }
+    
 })
 const Customer = mongoose.model("Customer", customerSchema);
 module.exports = Customer;

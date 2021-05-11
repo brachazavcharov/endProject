@@ -6,15 +6,62 @@ const getAll = async (req, res) => {
 }
 const getById = async (req, res) => {
     let { _id } = req.params;
-    if (!mongoose.Types.ObjectId.isValid(_id))
-        return res.status(404).send("invalid id");
+    // if (!mongoose.Types.ObjectId.isValid(_id))
+    //     return res.status(404).send("invalid id");
     let customer = await Customer.findById(_id);
     if (!customer)
-        return res.status(404).send("not exist");
+        return res.status(404).send("There is no such customer");
     return res.send(customer);
 }
-const post = async (req, res) => {
+const postCustomer = async (req, res) => {
     let customer = req.body;
     let newCustomer = new Customer(customer);
-    let 
+    try {
+        await newCustomer.save();
+        return res.send(newCustomer);
+    }
+    catch (err) {
+        return res.status(400).send(err.message)
+    }
+}
+const updateCustomer = async (req, res) => {
+    let customerBody = req.body;
+    let { _id } = req.params;
+    // if (!mongoose.Types.ObjectId.isValid(_id))
+    //     return res.status(404).send("invalid id");
+    let customer = await Customer.findById(_id);
+    if (!customer)
+        return res.status(404).send("There is no such customer");
+    customer.name = customerBody.name || customer.name;
+    customer.lastName = customerBody.lastName || customer.lastName;
+    customer.address = customerBody.address || customer.address;
+    customer.email = customerBody.email || customer.email;
+    customer.height = customerBody.height || customer.height;
+    customer.initialWeight = customerBody.initialWeight || customer.initialWeight;
+    customer.gender = customerBody.gender || customer.gender;
+    //customer.password=customerBody.password|| customer.password;
+    customer.phone = customerBody.phone || customer.phone;
+    customer.chest = customerBody.chest || customer.chest;
+    customer.waist = customerBody.waist || customer.waist;
+    customer.pelvis = customerBody.pelvis || customer.pelvis;
+    customer.joinDate = customerBody.joinDate || customer.joinDate;
+    try {
+        await customer.save();
+        return res.send(customer);
+    }
+    catch (err) {
+        return res.status(400).send(err.message)
+    }
+}
+const deleteCustomer = async (req, res) => {
+    let { _id } = req.params;
+    // if (!mongoose.Types.ObjectId.isValid(_id))
+    //     return res.status(404).send("invalid id");
+    let deleted = await Customer.findByIdAndRemove(_id);
+    if (!deleted)
+        return res.status(404).send("There is no such customer");
+    return res.send(deleted);
+}
+module.exports = {
+    getAll, getById, postCustomer, updateCustomer, deleteCustomer
 }

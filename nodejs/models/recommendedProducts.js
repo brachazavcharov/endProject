@@ -7,6 +7,9 @@ const recommendedProductSchema = mongoose.Schema({
     productId: {
         type: String,
         required: true
+    },
+    comment:{
+        type: String
     }
 })
 const RecommendedProduct = mongoose.model("RecommendedProduct", recommendedProductSchema);

@@ -4,10 +4,15 @@ const recipeSchema = mongoose.Schema({
         type: Date,
         required: true
     },
-    customerId: {
-        type: String
+    competitionId: {
+        type: String,
+        required: true
     },
-    recipeDetails: {
+    customerId: {
+        type: String,
+        required: true
+    },
+    recipeFile: {
         type: String,
         required: true
     },
