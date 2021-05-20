@@ -50,5 +50,5 @@ const deleteChat = async (req, res) => {
     return res.send(deleted);
 }
 module.exports = {
-    getAll, postRecipe, deleteRecipe
+    getAll, postChat, deleteChat
 }
