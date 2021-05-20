@@ -1,11 +1,13 @@
 const mongoose = require("mongoose");
 const recommendedProductSchema = mongoose.Schema({
     customerId: {
-        type: String,
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: "Customer",
         required: true
     },
     productId: {
-        type: String,
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: "Product",
         required: true
     },
     comment:{

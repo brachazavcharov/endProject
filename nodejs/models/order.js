@@ -10,10 +10,14 @@ const orderSchema = mongoose.Schema({
         required: true
     },
     customerId: {
-        type: String
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: "Customer",
+        required: true
     },
     productId: {
-        type: String
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: "Product",
+        required: true
     }
 })
 const Order = mongoose.model("Order", orderSchema);

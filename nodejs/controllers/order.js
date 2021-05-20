@@ -6,8 +6,6 @@ const getAll = async (req, res) => {
 }
 const getById = async (req, res) => {
     let { _id } = req.params;
-    // if (!mongoose.Types.ObjectId.isValid(_id))
-    //     return res.status(404).send("invalid id");
     let order = await Order.findById(_id);
     if (!order)
         return res.status(404).send("There is no such order");
@@ -27,8 +25,6 @@ const postOrder = async (req, res) => {
 const updateOrder = async (req, res) => {
     let orderBody = req.body;
     let { _id } = req.params;
-    // if (!mongoose.Types.ObjectId.isValid(_id))
-    //     return res.status(404).send("invalid id");
     let order = await Order.findById(_id);
     if (!order)
         return res.status(404).send("There is no such order");
@@ -46,8 +42,6 @@ const updateOrder = async (req, res) => {
 }
 const deleteOrder = async (req, res) => {
     let { _id } = req.params;
-    // if (!mongoose.Types.ObjectId.isValid(_id))
-    //     return res.status(404).send("invalid id");
     let deleted = await Order.findByIdAndRemove(_id);
     if (!deleted)
         return res.status(404).send("There is no such order");

@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-var validator = require("email-validator");
 const customerSchema = mongoose.Schema({
     name: {
         type: String,
@@ -36,13 +35,6 @@ const customerSchema = mongoose.Schema({
         max: 2.00,
         message: 'enter your real height'
     },
-    initialWeight: {
-        type: Number,
-        required: true,
-        min: 40,
-        max: 300,
-        message: 'enter your real weight'
-    },
     gender: {
         type: String,
         enum: { values: ["male", "female"] },
@@ -58,35 +50,53 @@ const customerSchema = mongoose.Schema({
         },
         required: [true, 'User phone number required']
     },
-    // password: {
-    //     type: String,
-    //     required: true,
-
-    // },
-   // Circumference: {
-        chest: {
-            type: Number,
-            required: [true, "enter your chest size"]
+    password: {
+        type: String,
+        required: true
+    },
+    chest: {
+        type: Number,
+        required: [true, "enter your chest size"]
+    },
+    waist: {
+        type: Number,
+        required: [true, "enter your waist size"]
+    },
+    pelvis: {
+        type: Number,
+        required: [true, "enter your pelvis size"]
+    },
+    joinDate: {
+        type: Date,
+        required: [true, "enter a join date"]
+    },
+    customerWeights: {
+        type: [{
+            date: {
+                type: Date,
+                required: true
+            },
+            currentWeight: {
+                type: Number,
+                min: 40,
+                max: 300,
+                required: true
+            }
+        }],
+        required: true
+    },
+    //קובץ תפריט
+    menu: {
+        breakfast: {
+            type: String
         },
-        waist: {
-            type: Number,
-            required: [true, "enter your waist size"]
+        lunch: {
+            type: String
         },
-        pelvis: {
-            type: Number,
-            required: [true, "enter your pelvis size"]
-        },
-    //}
-        // lostGrams: {
-        //     type: Number,
-        //     max: 250
-        // },
-        joinDate: {
-            type: Date,
-            required: [true, "enter a join date"]
+        dinner: {
+            type: String
         }
-
-    
+    }
 })
 const Customer = mongoose.model("Customer", customerSchema);
 module.exports = Customer;

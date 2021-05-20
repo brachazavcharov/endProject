@@ -6,8 +6,6 @@ const getAll = async (req, res) => {
 }
 const getById = async (req, res) => {
     let { _id } = req.params;
-    // if (!mongoose.Types.ObjectId.isValid(_id))
-    //     return res.status(404).send("invalid id");
     let competitionFiles = await CompetitionFiles.findById(_id);
     if (!competitionFiles)
         return res.status(404).send("There is no such competition");
@@ -27,8 +25,6 @@ const postCompetitionFile = async (req, res) => {
 const updateCompetitionFile = async (req, res) => {
     let competitionFileBody = req.body;
     let { _id } = req.params;
-    // if (!mongoose.Types.ObjectId.isValid(_id))
-    //     return res.status(404).send("invalid id");
     let competitionFile = await CompetitionFiles.findById(_id);
     if (!competitionFile)
         return res.status(404).send("There is no such competition");
@@ -48,8 +44,6 @@ const updateCompetitionFile = async (req, res) => {
 }
 const deleteCompetitionFile = async (req, res) => {
     let { _id } = req.params;
-    // if (!mongoose.Types.ObjectId.isValid(_id))
-    //     return res.status(404).send("invalid id");
     let deleted = await CompetitionFiles.findByIdAndRemove(_id);
     if (!deleted)
         return res.status(404).send("There is no such competition");

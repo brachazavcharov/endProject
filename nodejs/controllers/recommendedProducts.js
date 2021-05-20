@@ -6,8 +6,6 @@ const getAll = async (req, res) => {
 }
 const getById = async (req, res) => {
     let { _id } = req.params;
-    // if (!mongoose.Types.ObjectId.isValid(_id))
-    //     return res.status(404).send("invalid id");
     let recommendedProducts = await RecommendedProducts.findById(_id);
     if (!recommendedProducts)
         return res.status(404).send("There is no such product");
@@ -27,8 +25,6 @@ const postRecommendedProduct = async (req, res) => {
 const updateRecommendedProduct = async (req, res) => {
     let recommendedProductsBody = req.body;
     let { _id } = req.params;
-    // if (!mongoose.Types.ObjectId.isValid(_id))
-    //     return res.status(404).send("invalid id");
     let recommendedProducts = await RecommendedProducts.findById(_id);
     if (!recommendedProducts)
         return res.status(404).send("There is no such product");
@@ -45,8 +41,6 @@ const updateRecommendedProduct = async (req, res) => {
 }
 const deleteRecommendedProduct = async (req, res) => {
     let { _id } = req.params;
-    // if (!mongoose.Types.ObjectId.isValid(_id))
-    //     return res.status(404).send("invalid id");
     let deleted = await RecommendedProducts.findByIdAndRemove(_id);
     if (!deleted)
         return res.status(404).send("There is no such product");

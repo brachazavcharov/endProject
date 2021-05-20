@@ -6,8 +6,6 @@ const getAll = async (req, res) => {
 }
 const getById = async (req, res) => {
     let { _id } = req.params;
-    // if (!mongoose.Types.ObjectId.isValid(_id))
-    //     return res.status(404).send("invalid id");
     let recipe = await Recipe.findById(_id);
     if (!recipe)
         return res.status(404).send("There is no such recipe");
@@ -27,8 +25,6 @@ const postRecipe = async (req, res) => {
 const updateRecipe = async (req, res) => {
     let recipeBody = req.body;
     let { _id } = req.params;
-    // if (!mongoose.Types.ObjectId.isValid(_id))
-    //     return res.status(404).send("invalid id");
     let recipe = await Recipe.findById(_id);
     if (!recipe)
         return res.status(404).send("There is no such recipe");
@@ -48,8 +44,6 @@ const updateRecipe = async (req, res) => {
 }
 const deleteRecipe = async (req, res) => {
     let { _id } = req.params;
-    // if (!mongoose.Types.ObjectId.isValid(_id))
-    //     return res.status(404).send("invalid id");
     let deleted = await Recipe.findByIdAndRemove(_id);
     if (!deleted)
         return res.status(404).send("There is no such recipe");

@@ -5,11 +5,13 @@ const recipeSchema = mongoose.Schema({
         required: true
     },
     competitionId: {
-        type: String,
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: "CompetitionFiles",
         required: true
     },
     customerId: {
-        type: String,
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: "Customer",
         required: true
     },
     recipeFile: {
@@ -22,7 +24,7 @@ const recipeSchema = mongoose.Schema({
     },
     likes: {
         type: Number
-    }
+    },
 })
 const Recipe = mongoose.model("Recipe", recipeSchema);
 module.exports = Recipe;

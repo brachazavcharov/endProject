@@ -27,7 +27,9 @@ const competitionFilesSchema = mongoose.Schema({
         trim: true
     },
     winningRecipeId: {
-        type: String
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: "Recipe",
+        required: true
     },
     endDate: {
         type: Number

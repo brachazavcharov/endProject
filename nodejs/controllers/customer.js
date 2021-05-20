@@ -6,8 +6,6 @@ const getAll = async (req, res) => {
 }
 const getById = async (req, res) => {
     let { _id } = req.params;
-    // if (!mongoose.Types.ObjectId.isValid(_id))
-    //     return res.status(404).send("invalid id");
     let customer = await Customer.findById(_id);
     if (!customer)
         return res.status(404).send("There is no such customer");
@@ -27,8 +25,6 @@ const postCustomer = async (req, res) => {
 const updateCustomer = async (req, res) => {
     let customerBody = req.body;
     let { _id } = req.params;
-    // if (!mongoose.Types.ObjectId.isValid(_id))
-    //     return res.status(404).send("invalid id");
     let customer = await Customer.findById(_id);
     if (!customer)
         return res.status(404).send("There is no such customer");
@@ -39,7 +35,7 @@ const updateCustomer = async (req, res) => {
     customer.height = customerBody.height || customer.height;
     customer.initialWeight = customerBody.initialWeight || customer.initialWeight;
     customer.gender = customerBody.gender || customer.gender;
-    //customer.password=customerBody.password|| customer.password;
+    customer.password=customerBody.password|| customer.password;
     customer.phone = customerBody.phone || customer.phone;
     customer.chest = customerBody.chest || customer.chest;
     customer.waist = customerBody.waist || customer.waist;
@@ -55,8 +51,6 @@ const updateCustomer = async (req, res) => {
 }
 const deleteCustomer = async (req, res) => {
     let { _id } = req.params;
-    // if (!mongoose.Types.ObjectId.isValid(_id))
-    //     return res.status(404).send("invalid id");
     let deleted = await Customer.findByIdAndRemove(_id);
     if (!deleted)
         return res.status(404).send("There is no such customer");

@@ -13,12 +13,12 @@ const productSchema = mongoose.Schema({
         required: true,
         trim: true
     },
-    quantityInStock: {
-        type: Number,
-        min: 1,
-        max: 15,
-        required: true
-    },
+    // quantityInStock: {
+    //     type: Number,
+    //     min: 1,
+    //     max: 15,
+    //     required: true
+    // },
     description: {
         type: String,
         required: true,
@@ -26,10 +26,7 @@ const productSchema = mongoose.Schema({
         maxLength: 25,
         lowercase: true,
         trim: true
-    },
-    // purchasesQuantity: {
-    //     type: Number
-    // }
+    }
 })
 const Product = mongoose.model("Product", productSchema);
 module.exports = Product;
