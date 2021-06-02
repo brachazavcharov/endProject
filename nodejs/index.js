@@ -16,14 +16,15 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors);
-app.use("/competitionFiles", competitionFiles)
-app.use("/customer", customer)
 app.use("/order", order)
 app.use("/personalChat", personalChat)
 app.use("/product", product)
 app.use("/publicChat", publicChat)
 app.use("/recipe", recipe)
 app.use("/recommendedProducts", recommendedProducts)
+app.use("/competitionFiles", competitionFiles)
+app.use("/customer", customer)
+
 app.listen(5000, () => {
     console.log("listening on port 5000")
 })
