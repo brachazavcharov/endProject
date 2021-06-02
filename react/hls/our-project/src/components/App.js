@@ -1,11 +1,14 @@
 import './App.css';
-import 'semantic-ui-css/semantic.min.css'
-import { Icon, Button } from 'semantic-ui-react';
 
 function App() {
   return (
     <div className="App">
-      <button>hello</button>
+      <button class="ui primary button">
+        Save
+</button>
+      <button class="ui button">
+        Discard
+</button>
     </div>
   );
 }
