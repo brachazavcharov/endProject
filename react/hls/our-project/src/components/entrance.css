@@ -1,0 +1,8 @@
+.entrance{
+    display: inline-block;
+    margin-top: 30vh !important;
+    background-color: white;
+    border:solid 2px black;
+    width: 30vw;
+    height: 30vh;
+}
