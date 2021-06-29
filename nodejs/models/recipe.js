@@ -24,7 +24,7 @@ const recipeSchema = mongoose.Schema({
     },
     likes: {
         type: Number
-    },
+    }
 })
 const Recipe = mongoose.model("Recipe", recipeSchema);
 module.exports = Recipe;
