@@ -1,7 +1,6 @@
 import * as actionTypes from "../actions/actionTypes";
 const initialState = {
-    personalChatArr: [],
-
+    personalChatArr: []
 }
 export const PersonalChatReducer = (state = initialState, action) => {
     switch (action.type) {

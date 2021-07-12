@@ -25,5 +25,5 @@ const personalChatSchema = mongoose.Schema({
         }]
     }
 })
-const PersonalChat = mongoose.model("PersonalChat", personalChatSchema);
+const PersonalChat = mongoose.model("PersonalChat", personalChatSchema,"personalChat");
 module.exports = PersonalChat;

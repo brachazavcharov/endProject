@@ -1,4 +1,3 @@
-const mongoose = require("mongoose");
 const Recipe = require("../models/recipe");
 const getAll = async (req, res) => {
     let recipes = await Recipe.find();

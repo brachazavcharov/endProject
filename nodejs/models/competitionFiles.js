@@ -5,6 +5,7 @@ const competitionFilesSchema = mongoose.Schema({
         minLength: 2,
         maxLength: 15,
         lowercase: true,
+        required: true,
         trim: true
     },
     date: {
@@ -24,7 +25,8 @@ const competitionFilesSchema = mongoose.Schema({
         minLength: 2,
         maxLength: 15,
         lowercase: true,
-        trim: true
+        trim: true,
+        required: true
     },
     winningRecipeId: {
         type: mongoose.SchemaTypes.ObjectId,
@@ -32,8 +34,9 @@ const competitionFilesSchema = mongoose.Schema({
         required: true
     },
     endDate: {
-        type: Number
+        type: Number,
+        required: true
     }
 })
-const CompetitionFiles = mongoose.model("CompetitionFiles", competitionFilesSchema);
+const CompetitionFiles = mongoose.model("CompetitionFiles", competitionFilesSchema, "competitionFiles");
 module.exports = CompetitionFiles;

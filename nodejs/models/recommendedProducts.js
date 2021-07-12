@@ -14,5 +14,5 @@ const recommendedProductSchema = mongoose.Schema({
         type: String
     }
 })
-const RecommendedProduct = mongoose.model("RecommendedProduct", recommendedProductSchema);
+const RecommendedProduct = mongoose.model("RecommendedProduct", recommendedProductSchema,"recommendedProduct");
 module.exports = RecommendedProduct;

@@ -1,4 +1,3 @@
-const mongoose = require("mongoose");
 const CompetitionFiles = require("../models/competitionFiles");
 const getAll = async (req, res) => {
     let competitionFiles = await CompetitionFiles.find();

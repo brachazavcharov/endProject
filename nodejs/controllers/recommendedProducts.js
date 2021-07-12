@@ -1,4 +1,3 @@
-const mongoose = require("mongoose");
 const RecommendedProducts = require("../models/recommendedProducts");
 const getAll = async (req, res) => {
     let recommendedProducts = await RecommendedProducts.find();

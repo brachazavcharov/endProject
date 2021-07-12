@@ -1,7 +1,7 @@
-const mongoose = require("mongoose");
 const Customer = require("../models/customer");
 const getAll = async (req, res) => {
     let customers = await Customer.find();
+    
     return res.send(customers);
 }
 const getById = async (req, res) => {

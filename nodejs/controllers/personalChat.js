@@ -1,4 +1,3 @@
-const mongoose = require("mongoose");
 const PersonalChat = require("../models/personalChat");
 const getAll = async (req, res) => {
     let chats = await PersonalChat.find();

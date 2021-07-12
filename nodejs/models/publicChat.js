@@ -24,5 +24,5 @@ const publicChatSchema = mongoose.Schema({
         }]
     }
 })
-const PublicChat = mongoose.model("PublicChat", publicChatSchema);
+const PublicChat = mongoose.model("PublicChat", publicChatSchema,"publicChat");
 module.exports = PublicChat;

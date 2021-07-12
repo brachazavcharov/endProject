@@ -100,6 +100,6 @@ const customerSchema = mongoose.Schema({
         }
     }
 })
-const Customer = mongoose.model("Customer", customerSchema);
+const Customer = mongoose.model("Customer", customerSchema,"customer");
 module.exports = Customer;
 

@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const morgan = require('morgan');
 const competitionFiles = require("./routes/competitionFiles");
 const customer = require("./routes/customer");
 const order = require("./routes/order");
@@ -16,7 +17,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cors);
+app.use(cors());
+app.use(morgan('dev'));
 app.use("/order", order)
 app.use("/personalChat", personalChat)
 app.use("/product", product)
@@ -25,7 +27,6 @@ app.use("/recipe", recipe)
 app.use("/recommendedProducts", recommendedProducts)
 app.use("/competitionFiles", competitionFiles)
 app.use("/customer", customer)
-
 app.listen(5000, () => {
     console.log("listening on port 5000")
 })
