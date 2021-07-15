@@ -4,9 +4,13 @@ import './index.css';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 import 'semantic-ui-css/semantic.min.css'
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 ReactDOM.render(
   <React.StrictMode>
+    <Provider store={createStore()}>
     <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
