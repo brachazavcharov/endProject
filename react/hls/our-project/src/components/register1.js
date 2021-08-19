@@ -20,10 +20,10 @@ const Register1 = () => {
     useEffect(() => {
         lastName.length < 2 ? setLastNameValid(false) : setLastNameValid(true);
         firstName.length < 2 ? setFirstNameValid(false) : setFirstNameValid(true);
-        phone.length < 9 || phone.length > 9 ? setPhoneValid(false) : setPhoneValid(true);
-        password.length < 2 ? setPasswordValid(false) : setPasswordValid(true);
-        firstName.length < 2 ? setFirstNameValid(false) : setFirstNameValid(true);
-    }, [firstName, firstNameValid, lastName, lastNameValid,phone,phoneValid])
+        phone.length < 10 || phone.length > 10 ? setPhoneValid(false) : setPhoneValid(true);
+        password.length < 6 ? setPasswordValid(false) : setPasswordValid(true);
+        // firstName.length < 2 ? setFirstNameValid(false) : setFirstNameValid(true);
+    }, [firstName, firstNameValid, lastName, lastNameValid, phone, phoneValid])
     const submit = () => {
         if (firstNameValid && lastNameValid && phoneValid && mailValid && passwordValid) {
 
@@ -37,7 +37,7 @@ const Register1 = () => {
             <Form onSubmit={submit} >
                 <Icon className="food"></Icon>
                 <Form.Field>
-                    <input ref={firstNameInput} onChange={() => {
+                    <input required ref={firstNameInput} onChange={() => {
                         let x = firstNameInput.current.value;
                         setFirstName(x);
                     }}
@@ -53,7 +53,7 @@ const Register1 = () => {
                 </Form.Field>
                 <Divider />
                 <Form.Field>
-                    <input type='text' placeholder='שם משפחה' ref={lastNameInput} onChange={() => {
+                    <input required type='text' placeholder='שם משפחה' ref={lastNameInput} onChange={() => {
                         let x = lastNameInput.current.value;
                         setLastName(x);
                     }} />
@@ -65,7 +65,7 @@ const Register1 = () => {
                 </Form.Field>
                 <Divider />
                 <Form.Field>
-                    <input type='text' placeholder='מספר פלאפון' ref={phoneInput}
+                    <input required type='text' placeholder='מספר פלאפון' ref={phoneInput}
                         onChange={() => {
                             let x = phoneInput.current.value;
                             setPhone(x);
@@ -78,9 +78,9 @@ const Register1 = () => {
                 </Form.Field>
                 <Divider />
                 <Form.Field inline>
-                    <input type='text' placeholder='דוא"ל' />
+                    <input required type='text' placeholder='דוא"ל' />
                     <Label basic color='red' pointing='left'>
-                        !  המייל הזה קיים כבר
+                        !  הכנס מייל תקין
                    </Label>
                 </Form.Field>
                 <Divider />
@@ -88,7 +88,7 @@ const Register1 = () => {
                     <Label basic color='red' pointing='right'>
                         סיסמא חייבת להכיל 6 תווים לפחות
                     </Label>
-                    <input type='password' placeholder='Password' />
+                    <input required type='password' placeholder='Password' />
                 </Form.Field>
                 <Header as='h4' color='teal' textAlign='right'>:כתובת</Header>
                 <Form.Field>
@@ -109,7 +109,7 @@ const Register1 = () => {
                         בבקשה הכנס מספר רחוב
                 </Label>
                 </Form.Field>
-                <Button icon labelPosition='right' disabled>
+                <Button icon labelPosition='right'>
                     הבא
                 <Icon name='right arrow' />
                 </Button>
