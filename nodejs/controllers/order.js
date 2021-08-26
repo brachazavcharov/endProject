@@ -4,8 +4,8 @@ const getAll = async (req, res) => {
     return res.send(orders);
 }
 const getById = async (req, res) => {
-    let { _id } = req.params;
-    let order = await Order.findById(_id);
+    let { id } = req.params;
+    let order = await Order.findById(id);
     if (!order)
         return res.status(404).send("There is no such order");
     return res.send(order);
@@ -23,8 +23,8 @@ const postOrder = async (req, res) => {
 }
 const updateOrder = async (req, res) => {
     let orderBody = req.body;
-    let { _id } = req.params;
-    let order = await Order.findById(_id);
+    let { id } = req.params;
+    let order = await Order.findById(id);
     if (!order)
         return res.status(404).send("There is no such order");
     order.orderDate = orderBody.orderDate || order.orderDate;
@@ -40,8 +40,8 @@ const updateOrder = async (req, res) => {
     }
 }
 const deleteOrder = async (req, res) => {
-    let { _id } = req.params;
-    let deleted = await Order.findByIdAndRemove(_id);
+    let { id } = req.params;
+    let deleted = await Order.findByIdAndRemove(id);
     if (!deleted)
         return res.status(404).send("There is no such order");
     return res.send(deleted);

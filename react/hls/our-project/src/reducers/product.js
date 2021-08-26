@@ -4,7 +4,7 @@ const initialState = {
     selectedProduct: null,
     updateProduct: null
 }
-export const productReducer = (state = initialState, action) => {
+ const productReducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.PRODUCT_ADDED:
             return {
@@ -15,8 +15,7 @@ export const productReducer = (state = initialState, action) => {
             let arr = state.productArr.filter(p => p._id !== action.payload)
             return {
                 ...state,
-                productArr:arr
-
+                productArr: arr
             }
         case actionTypes.PRODUCT_UPDATED:
             return {
@@ -28,6 +27,12 @@ export const productReducer = (state = initialState, action) => {
                 ...state,
                 selectedProduct: action.payload
             }
+        case actionTypes.PRODUCTS_SAVED:
+            return {
+                ...state,
+                productArr: [...action.payload]
+            }
     }
     return state;
 }
+export default productReducer;

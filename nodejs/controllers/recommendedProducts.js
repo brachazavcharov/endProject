@@ -4,8 +4,8 @@ const getAll = async (req, res) => {
     return res.send(recommendedProducts);
 }
 const getById = async (req, res) => {
-    let { _id } = req.params;
-    let recommendedProducts = await RecommendedProducts.findById(_id);
+    let { id } = req.params;
+    let recommendedProducts = await RecommendedProducts.findById(id);
     if (!recommendedProducts)
         return res.status(404).send("There is no such product");
     return res.send(recommendedProducts);
@@ -23,8 +23,8 @@ const postRecommendedProduct = async (req, res) => {
 }
 const updateRecommendedProduct = async (req, res) => {
     let recommendedProductsBody = req.body;
-    let { _id } = req.params;
-    let recommendedProducts = await RecommendedProducts.findById(_id);
+    let { id } = req.params;
+    let recommendedProducts = await RecommendedProducts.findById(id);
     if (!recommendedProducts)
         return res.status(404).send("There is no such product");
     recommendedProducts.customerId = recommendedProductsBody.customerId || recommendedProducts.customerId;
@@ -39,8 +39,8 @@ const updateRecommendedProduct = async (req, res) => {
     }
 }
 const deleteRecommendedProduct = async (req, res) => {
-    let { _id } = req.params;
-    let deleted = await RecommendedProducts.findByIdAndRemove(_id);
+    let { id } = req.params;
+    let deleted = await RecommendedProducts.findByIdAndRemove(id);
     if (!deleted)
         return res.status(404).send("There is no such product");
     return res.send(deleted);

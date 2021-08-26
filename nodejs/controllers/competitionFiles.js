@@ -4,8 +4,8 @@ const getAll = async (req, res) => {
     return res.send(competitionFiles);
 }
 const getById = async (req, res) => {
-    let { _id } = req.params;
-    let competitionFiles = await CompetitionFiles.findById(_id);
+    let { id } = req.params;
+    let competitionFiles = await CompetitionFiles.findById(id);
     if (!competitionFiles)
         return res.status(404).send("There is no such competition");
     return res.send(competitionFiles);
@@ -23,8 +23,8 @@ const postCompetitionFile = async (req, res) => {
 }
 const updateCompetitionFile = async (req, res) => {
     let competitionFileBody = req.body;
-    let { _id } = req.params;
-    let competitionFile = await CompetitionFiles.findById(_id);
+    let { id } = req.params;
+    let competitionFile = await CompetitionFiles.findById(id);
     if (!competitionFile)
         return res.status(404).send("There is no such competition");
     competitionFile.name = competitionFileBody.name || competitionFile.name;
@@ -42,8 +42,8 @@ const updateCompetitionFile = async (req, res) => {
     }
 }
 const deleteCompetitionFile = async (req, res) => {
-    let { _id } = req.params;
-    let deleted = await CompetitionFiles.findByIdAndRemove(_id);
+    let { id } = req.params;
+    let deleted = await CompetitionFiles.findByIdAndRemove(id);
     if (!deleted)
         return res.status(404).send("There is no such competition");
     return res.send(deleted);

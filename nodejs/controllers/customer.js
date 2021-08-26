@@ -5,8 +5,8 @@ const getAll = async (req, res) => {
     return res.send(customers);
 }
 const getById = async (req, res) => {
-    let { _id } = req.params;
-    let customer = await Customer.findById(_id);
+    let { id } = req.params;
+    let customer = await Customer.findById(id);
     if (!customer)
         return res.status(404).send("There is no such customer");
     return res.send(customer);
@@ -24,8 +24,8 @@ const postCustomer = async (req, res) => {
 }
 const updateCustomer = async (req, res) => {
     let customerBody = req.body;
-    let { _id } = req.params;
-    let customer = await Customer.findById(_id);
+    let { id } = req.params;
+    let customer = await Customer.findById(id);
     if (!customer)
         return res.status(404).send("There is no such customer");
     customer.name = customerBody.name || customer.name;
@@ -33,7 +33,7 @@ const updateCustomer = async (req, res) => {
     customer.address = customerBody.address || customer.address;
     customer.email = customerBody.email || customer.email;
     customer.height = customerBody.height || customer.height;
-    customer.initialWeight = customerBody.initialWeight || customer.initialWeight;
+    customer.customerWeights = customerBody.customerWeights || customer.customerWeights;
     customer.gender = customerBody.gender || customer.gender;
     customer.password=customerBody.password|| customer.password;
     customer.phone = customerBody.phone || customer.phone;
@@ -50,8 +50,8 @@ const updateCustomer = async (req, res) => {
     }
 }
 const deleteCustomer = async (req, res) => {
-    let { _id } = req.params;
-    let deleted = await Customer.findByIdAndRemove(_id);
+    let { id } = req.params;
+    let deleted = await Customer.findByIdAndRemove(id);
     if (!deleted)
         return res.status(404).send("There is no such customer");
     return res.send(deleted);

@@ -4,14 +4,15 @@ const getAll = async (req, res) => {
     return res.send(products);
 }
 const getById = async (req, res) => {
-    let { _id } = req.params;
-    let product = await Product.findById(_id);
+    let { id } = req.params;
+    let product = await Product.findById(id);
     if (!product)
         return res.status(404).send("There is no such product");
     return res.send(product);
 }
 const postProduct = async (req, res) => {
     let product = req.body;
+    const url1 = req.protocol + '://' + req.get('host');
     let newProduct = new Product(product);
     try {
         await newProduct.save();
@@ -23,8 +24,8 @@ const postProduct = async (req, res) => {
 }
 const updateProduct = async (req, res) => {
     let productBody = req.body;
-    let { _id } = req.params;
-    let product = await Product.findById(_id);
+    let { id } = req.params;
+    let product = await Product.findById(id);
     if (!product)
         return res.status(404).send("There is no such product");
     product.name = productBody.name || product.name;
@@ -40,8 +41,8 @@ const updateProduct = async (req, res) => {
     }
 }
 const deleteProduct = async (req, res) => {
-    let { _id } = req.params;
-    let deleted = await Product.findByIdAndRemove(_id);
+    let { id } = req.params;
+    let deleted = await Product.findByIdAndRemove(id);
     if (!deleted)
         return res.status(404).send("There is no such product");
     return res.send(deleted);

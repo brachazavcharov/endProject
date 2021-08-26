@@ -23,7 +23,7 @@ const productSchema = mongoose.Schema({
         type: String,
         required: true,
         minLength: 5,
-        maxLength: 25,
+        maxLength: 50,
         lowercase: true,
         trim: true
     }

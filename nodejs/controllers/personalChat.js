@@ -4,8 +4,8 @@ const getAll = async (req, res) => {
     return res.send(chats);
 }
 // const getById = async (req, res) => {
-//     let { _id } = req.params;
-//     let chat = await PersonalChat.findById(_id);
+//     let { id } = req.params;
+//     let chat = await PersonalChat.findById(id);
 //     if (!chat)
 //         return res.status(404).send("There is no such chat");
 //     return res.send(chat);
@@ -23,8 +23,8 @@ const postChat = async (req, res) => {
 }
 // const updateChat = async (req, res) => {
 //     let chatBody = req.body;
-//     let { _id } = req.params;
-//     let chat = await PersonalChat.findById(_id);
+//     let { id } = req.params;
+//     let chat = await PersonalChat.findById(id);
 //     if (!chat)
 //         return res.status(404).send("There is no such chat");
 //     recipe.orderDate = recipeBody.orderDate || recipe.orderDate;
@@ -42,8 +42,8 @@ const postChat = async (req, res) => {
 //     }
 // }
 const deleteChat = async (req, res) => {
-    let { _id } = req.params;
-    let deleted = await PersonalChat.findByIdAndRemove(_id);
+    let { id } = req.params;
+    let deleted = await PersonalChat.findByIdAndRemove(id);
     if (!deleted)
         return res.status(404).send("There is no such chat");
     return res.send(deleted);

@@ -5,12 +5,20 @@ import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 import 'semantic-ui-css/semantic.min.css'
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
+import productReducer from "./reducers/product";
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const myStore = createStore(productReducer,
+  composeEnhancers(
+    applyMiddleware(thunk))
+);
+
 ReactDOM.render(
   <React.StrictMode>
-    {/* <Provider store={createStore()}> */}
-    <App />
-    {/* </Provider> */}
+    <Provider store={myStore} >
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

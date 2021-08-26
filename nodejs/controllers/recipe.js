@@ -4,8 +4,8 @@ const getAll = async (req, res) => {
     return res.send(recipes);
 }
 const getById = async (req, res) => {
-    let { _id } = req.params;
-    let recipe = await Recipe.findById(_id);
+    let { id } = req.params;
+    let recipe = await Recipe.findById(id);
     if (!recipe)
         return res.status(404).send("There is no such recipe");
     return res.send(recipe);
@@ -23,8 +23,8 @@ const postRecipe = async (req, res) => {
 }
 const updateRecipe = async (req, res) => {
     let recipeBody = req.body;
-    let { _id } = req.params;
-    let recipe = await Recipe.findById(_id);
+    let { id } = req.params;
+    let recipe = await Recipe.findById(id);
     if (!recipe)
         return res.status(404).send("There is no such recipe");
     recipe.orderDate = recipeBody.orderDate || recipe.orderDate;
@@ -42,8 +42,8 @@ const updateRecipe = async (req, res) => {
     }
 }
 const deleteRecipe = async (req, res) => {
-    let { _id } = req.params;
-    let deleted = await Recipe.findByIdAndRemove(_id);
+    let { id } = req.params;
+    let deleted = await Recipe.findByIdAndRemove(id);
     if (!deleted)
         return res.status(404).send("There is no such recipe");
     return res.send(deleted);

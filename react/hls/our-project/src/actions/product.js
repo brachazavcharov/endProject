@@ -25,3 +25,17 @@ export const updateProduct = (product) => {
         payload: product
     }
 }
+export const getAllProducts = () => {
+    return (dispatch) => {
+        axios.get("http://localhost:5000/product").then(succ => {
+            console.log(succ);
+            dispatch(saveProducts(succ.data));
+        }).catch(ee => { console.log(ee.message) });
+    }
+}
+export const saveProducts = (products) => {
+    return {
+        type: actionTypes.PRODUCTS_SAVED,
+        payload: products
+    }
+}
